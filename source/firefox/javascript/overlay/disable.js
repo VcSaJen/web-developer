@@ -131,6 +131,18 @@ WebDeveloper.Overlay.Disable.toggleMinimumFontSize = function(element)
 WebDeveloper.Overlay.Disable.togglePageColors = function(element)
 {
   WebDeveloper.Preferences.enablePreference(element, "browser.display.use_document_colors");
+  
+  var tmpEnableColors = 2;
+
+  // If enabling referrers
+  if(WebDeveloper.Common.convertToBoolean(element.getAttribute("checked")))
+  {
+    tmpEnableColors = 0;
+  }
+
+  WebDeveloper.Preferences.setIntegerPreference("browser.display.document_color_use", tmpEnableColors);  
+  
+  
   BrowserReload();
 };
 
